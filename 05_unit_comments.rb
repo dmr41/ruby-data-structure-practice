@@ -1,4 +1,15 @@
 require 'pp'
+require_relative 'curriculum'
+
+CURRICULUM[:units].each do |unit|
+  @cc = 0
+  unit[:lessons].each do |lesson|
+   lesson[:occurrences].each do |date, hash|
+     @cc += hash[:comments].count
+   end
+  end
+  puts "#{unit[:name]} - #{@cc}"
+end
 
 # Require the Ruby file
 #

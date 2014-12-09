@@ -1,4 +1,18 @@
 require 'pp'
+require 'json'
+
+curriculum = JSON.parse(File.read('curriculum.json'))
+
+curriculum["units"].each do |unit|
+  puts unit["name"]
+  unit["lessons"].each do |lesson|
+      lesson["occurrences"].each do |date, hash|
+        @cc = hash["comments"].count
+      end
+      puts "  #{lesson["name"]} - #{@cc}"
+  end
+      # puts "  #{unit["lessons"]["name"]} - #{hash["comments"].count}"
+end
 
 # Require json and parse the json file
 #
